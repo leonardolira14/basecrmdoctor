@@ -1,0 +1,57 @@
+<div class="container-fluid bg-azuladmyo fixed-top">
+    <div class="row">
+        <div class="col-6">
+            <button mat-icon-button class="text-white" (click)="ver_menu()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div class="col-6 text-right">
+            <button mat-button class="text-white" [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon> Leonardo Lira Cazares - Clinica 01 <mat-icon>expand_more</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>perm_identity</mat-icon> Mis Datos
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>lock</mat-icon> Cambiar Contraseña
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>power_settings_new</mat-icon> Salir
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</div>
+<div class="menu " [ngClass]="(menu_active)?'active':''">
+    <div class="container-fluid">
+        <div class="row">
+            <mat-list class="col-12 text-monse">
+                <mat-list-item class="text-white" (click)="ir_menu('welcome')">
+                    <mat-icon mat-list-icon>home</mat-icon>
+                    <h4 mat-line>Home</h4>
+                </mat-list-item>
+                <mat-list-item class="text-white" (click)="ir_menu('listpacientes')">
+                    <mat-icon mat-list-icon>supervisor_account</mat-icon>
+                    <h4 mat-line>Pacientes</h4>
+                </mat-list-item>
+                <mat-list-item class="text-white"  (click)="ir_menu('listdoctors')">
+                    <mat-icon mat-list-icon>person</mat-icon>
+                    <h4 mat-line>Médicos</h4>
+                </mat-list-item>
+                <mat-list-item class="text-white">
+                    <mat-icon mat-list-icon>home</mat-icon>
+                    <h4 mat-line>Clinicas</h4>
+                </mat-list-item>
+                <mat-list-item class="text-white">
+                    <mat-icon mat-list-icon>assignment_ind</mat-icon>
+                    <h4 mat-line>Citas</h4>
+                </mat-list-item>
+                <mat-list-item class="text-white">
+                    <mat-icon mat-list-icon>clear</mat-icon>
+                    <h4 mat-line>Salir</h4>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+
+<div class="container m-t-60 text-monse">
+    <div class="row">
+        <div class="col-12 m-b-40">
+             <h2>Pacientes</h2>
+        </div>
+        <mat-form-field class="col-3">
+            <mat-label>Unidad Médica</mat-label>
+            <mat-select>
+                <mat-option >
+                    Selecciona
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-7">
+            <input matInput placeholder="Buscar Paciente por Nombre, Apellido, CURP o Número de Expediente" value="">
+        </mat-form-field>
+        <div class="col-2 text-right">
+            <button (click)="ir_list('addpaciente')" type="button" class="btn btn-primary">Añadir Paciente</button>
+        </div>
+    </div>
+    <!--Inicio de secccion de card-->
+    <div class="row m-t-30">
+        <div class="col-3">
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar class="header-image"></div>
+                    <mat-card-title >Leonardo Lira Cazares</mat-card-title>
+                    <mat-card-subtitle>4545454545-fk</mat-card-subtitle>
+                    <p mat-line>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                                <mat-icon>create</mat-icon>
+                                <span>Editar Datos</span>
+                            </button>
+                            <button mat-menu-item >
+                                <mat-icon>refresh</mat-icon>
+                                <span>cambio de unidad medica</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>note_add</mat-icon>
+                                <span>Consulta</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>queue</mat-icon>
+                                <span>Agendar Consulta</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>import_contacts</mat-icon>
+                                <span>Resumen Clinico</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>power_settings_new</mat-icon>
+                                <span>Baja</span>
+                            </button>
+                        </mat-menu>
+                    </p>
+                </mat-card-header>
+                <mat-card-content>
+                <mat-grid-list cols="4" class="w-100 text-muted">
+                    <mat-grid-tile class="text-left " [colspan]="2" [rowspan]="1">
+                        <small class="d-block w-100">Edad</small>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
+                        99 años
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-left" [colspan]="2" [rowspan]="1">
+                        <small class="d-block w-100">Sexo</small>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
+                        Masculino
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-left" [colspan]="2" [rowspan]="1">
+                        <small class="d-block w-100">Fecha de Ultima Consulta</small>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
+                        11/06/2012
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-left" [colspan]="2" [rowspan]="1">
+                        <small class="d-block w-100">Unidad Medica</small>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
+                        Clinica 23
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-left" [colspan]="2" [rowspan]="1">
+                        <small class="d-block w-100">Teléfono de Contacto</small>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
+                        7761025180
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <!--fin de secccion de card-->
+</div>

@@ -1,0 +1,204 @@
+<div class="container m-t-60 text-monse">
+    <div class="row">
+        <div class="col-12 m-b-40">
+            <h2>Formulario de datos de Médicos</h2>
+        </div>
+        <div class="col-4 text-center">
+            <div mat-card-avatar class="avatar">
+
+            </div>
+            <button type="button" class="btn btn-primary m-t-30">Subir Foto</button>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <mat-form-field class="col-4">
+                    <input matInput placeholder="Nombre(S) *">
+                </mat-form-field>
+                <mat-form-field class="col-4">
+                    <input matInput placeholder="Apellido Paterno *">
+                </mat-form-field>
+                <mat-form-field class="col-4">
+                    <input matInput placeholder="Apellido Materno *">
+                </mat-form-field>
+                <mat-form-field class="col-4">
+                    <input disabled  matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker touchUi  disabled="false" #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="col-2">
+                    <input matInput placeholder="Edad">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Sexo *">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Curp">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="RFC">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Teléfono Fijo">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Teléfono Móvil">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Email">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Unidad Médica">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Cedula Profecional">
+                </mat-form-field>
+                <mat-form-field class="col-6">
+                    <input matInput placeholder="Institución que otorgó cédula">
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="col-12 m-t-30">
+            <div class="row">
+                <div class="col-10">
+                    <h3>Información consulta</h3>
+                </div>
+                <div class="col-2 text-right">
+                    <button (click)="modal_horarios=!modal_horarios" mat-mini-fab class="bg-succes">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="col-12">
+                    <mat-chip-list>
+                        <mat-chip>Lunes-jueves (9:00am a 7:00pm) <mat-icon>clear</mat-icon></mat-chip>
+                        <mat-chip>Lunes-jueves-Martes (9:00am a 7:00pm) <mat-icon>clear</mat-icon></mat-chip>
+                        <mat-chip>Domingo-Sabado (9:00am a 2:00pm) <mat-icon>clear</mat-icon></mat-chip>
+                    </mat-chip-list>
+                </div>
+                
+            </div>
+        </div> 
+        <div class="col-12 m-t-60">
+            <div class="row">
+                <div class="col-10">
+                    <h3>Especialidades</h3>
+                </div> 
+                <div class="col-2 text-right">
+                    <button (click)="modal_especialidad=!modal_especialidad" mat-mini-fab class="bg-succes"><mat-icon>add</mat-icon></button>
+                </div>
+                <div class="col-12">
+                    <mat-chip-list>
+                        <mat-chip>Angiología <mat-icon>clear</mat-icon>
+                        </mat-chip>
+                        <mat-chip>Dermatología <mat-icon>clear</mat-icon>
+                        </mat-chip>
+                        <mat-chip>Ginecología <mat-icon>clear</mat-icon>
+                        </mat-chip>
+                        <mat-chip>Radiología <mat-icon>clear</mat-icon>
+                        </mat-chip>
+                        <mat-chip>Fisoterapeuta <mat-icon>clear</mat-icon>
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-12 m-t-60">
+            <div class="row">
+                <div class="col-10">
+                    <h3>Guardias</h3>
+                </div>
+                <div class="col-2 text-right">
+                    <button mat-mini-fab class="bg-succes">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                
+        
+            </div>
+        </div>
+        <div class="col-12 text-right m-t-30 m-b-30">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-danger mr-3">Cancelar</button>
+
+                <button type="button" class="btn btn-succes">Guardar Datos</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="preload-modal" *ngIf="modal_especialidad">
+    <div class="container">
+        <div class="row">
+                <mat-card class="col-6 m-auto">
+                    <mat-card-header>    
+                        <mat-card-title>Agregar Especialidad</mat-card-title>
+                        <button (click)="modal_especialidad=!modal_especialidad"  class="btn-close-modal" mat-icon-button aria-label="Example icon-button with a menu">
+                            <mat-icon>clear</mat-icon>
+                        </button>
+                    </mat-card-header>
+                
+                <mat-card-content>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Especialidad" value="">
+                    </mat-form-field>
+
+                </mat-card-content>
+                <mat-card-actions class="d-flex justify-content-end">
+                    <button class="btn btn-outline-danger mr-3">Cerrar</button>
+                    <button class="btn btn-succes">Guardar</button>
+                </mat-card-actions>
+        </mat-card>
+        </div>
+    </div>
+</div>
+<div class="preload-modal"  *ngIf="modal_horarios">
+    <div class="container">
+        <div class="row">
+            <mat-card class="col-6 m-auto">
+                <mat-card-header>
+                    <mat-card-title>Horario de Consultas</mat-card-title>
+                    <button (click)="modal_horarios=!modal_horarios" class="btn-close-modal" mat-icon-button aria-label="Example icon-button with a menu">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </mat-card-header>
+                    <mat-checkbox class="ml-3">Lunes</mat-checkbox>
+                    <mat-checkbox class="ml-3">Martes</mat-checkbox>
+                    <mat-checkbox class="ml-3">Miercoles</mat-checkbox>
+                    <mat-checkbox class="ml-3">Jueves</mat-checkbox>
+                    <mat-checkbox class="ml-3">Viernes</mat-checkbox>
+                    <mat-checkbox class="ml-3">Sabado</mat-checkbox>
+                    <mat-checkbox class="ml-3">Domingo</mat-checkbox>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <mat-form-field class="col-6">
+                                <mat-label>Hora Inicial</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let hora of horas" [value]="hora">
+                                        {{hora}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="col-6">
+                                <mat-label>Hora Final</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let hora of horas" [value]="hora">
+                                        {{hora}}
+                                    </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    
+                <mat-card-content>
+                    
+
+                </mat-card-content>
+                <mat-card-actions class="d-flex justify-content-end">
+                    <button class="btn btn-outline-danger mr-3">Cerrar</button>
+                    <button class="btn btn-succes">Guardar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

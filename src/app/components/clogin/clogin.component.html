@@ -1,0 +1,35 @@
+
+<div class="container-fluid  bg-basegris contenedor-gen">
+    <div class="row  h-100 d-flex align-items-center justify-content-center ">
+        <div class="col-12 col-md-7 col-xl-7 col-lg-7 bg-white">
+            <div class="row">
+                <div class="col-12 col-md-7 col-xl-7 col-lg-7 d-flex align-items-center">
+                    <img class="img-fluid" src="/assets/img/logo-naucaplan_admyo.jpg" alt="">
+                    
+                </div>
+                <div class="col-12 col-md-5 col-xl-5 col-lg-5  card-login">
+                    <div class="row">
+                        <div class="col-12 text-monse text-muted m-t-40">
+                            <h5>Login</h5>
+                        </div>
+                        <mat-form-field class="col-12 m-t-30">
+                            <input class="text-blackk" [(ngModel)]="modelo_login.username" matInput placeholder="Usuario" value="">
+                        </mat-form-field>
+                        <mat-form-field class="col-12">
+                            <input class="text-blackk" matInput  [(ngModel)]="modelo_login.password" type="password" placeholder="Contraseña" value="">
+                        </mat-form-field>
+                        <div class="col-12 m-t-30">
+                            <mat-checkbox class="text-monse text-muted ">Recordar mis datos de sesión</mat-checkbox>
+                        </div>
+                        <button (click)="login()"  class="btn btn-vino text-white col-6 m-t-30  centrar">Iniciar Sesión</button>
+                        <div  (click)="ir('recuperapass')" class="btn btn-secondary text-white col-7 m-t-30 centrar m-b-30">Olvide mi contraseña</div>
+                    </div>
+                   
+                    
+                </div>
+            </div>
+            
+        </div>
+       
+    </div>
+</div>
