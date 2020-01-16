@@ -12,8 +12,8 @@ export class UserService {
     private http: HttpClient,
     private cookie_service: CookieService
   ) {
-    if (this.cookie_service.get('cookie_service')) {
-      this.datos_usuario = JSON.parse(this.cookie_service.get('cookie_service'));
+    if (this.cookie_service.get('datos_usuario')) {
+      this.datos_usuario = JSON.parse(this.cookie_service.get('datos_usuario'));
     }
    }
 

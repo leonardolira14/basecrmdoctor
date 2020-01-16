@@ -170,3 +170,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     top: 0;
   }
 }
+.sniper{
+  z-index: 10000;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top:0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+}
+.my-pagination .ngx-pagination {
+  & a,& button{
+      background: map-get($colors,secondary);
+      color:map-get($colors,blanco);
+      &:hover{
+		  background: map-get($colors,primary);
+		  color:map-get($colors,blanco);
+      }
+  }
+  & .current {
+      background: map-get($colors,primary);
+  }
+}
+.big{
+	height: 100vh;
+    display: flex;
+}
+.btn-menu-card{
+	right: 1px;
+    position: absolute !important;
+}

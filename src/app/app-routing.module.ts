@@ -7,6 +7,7 @@ import { PlistComponent } from './pages/pacientes/plist/plist.component';
 import { FormAddComponent } from './pages/pacientes/form-add/form-add.component';
 import { ListaComponent } from './pages/doctores/lista/lista.component';
 import { FormmedicosComponent } from './pages/doctores/formmedicos/formmedicos.component';
+import { PdataComponent } from './pages/pacientes/pdata/pdata.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'addpaciente', component: FormAddComponent },
   { path: 'listdoctors', component: ListaComponent },
   { path: 'adddoctor', component: FormmedicosComponent },
+  { path: 'resumenpaciente/:idpaciente', component: PdataComponent },
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlserver: 'http://doctor.admyo.com/doctorback'
+  urlserver: 'https://doctor.admyo.com/backend/'
 };

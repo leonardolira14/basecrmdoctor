@@ -1,10 +1,10 @@
+@import '../../../../styles.scss';
 .header-image{
     
     width:40px;
     height: 40px;
     background-position: center;
     background-size: cover;
-    background-image: url('/assets/img/elgestor.png');
 }
 .mat-card-title{
     font-size: 1rem;

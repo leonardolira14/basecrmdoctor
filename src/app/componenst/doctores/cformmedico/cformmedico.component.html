@@ -1,59 +1,78 @@
 <div class="container m-t-60 text-monse">
-    <div class="row">
+    <form class="row" [formGroup]="formGroup" (ngSubmit)="OnsaveForm()">
         <div class="col-12 m-b-40">
             <h2>Formulario de datos de Médicos</h2>
         </div>
         <div class="col-4 text-center">
-            <div mat-card-avatar class="avatar">
+            <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + imglogo + ')'}"  class="avatar">
 
             </div>
-            <button type="button" class="btn btn-primary m-t-30">Subir Foto</button>
+            <button type="button" (click)="logo.click()" class="btn btn-primary m-t-30">Seleccionar Foto</button>
+            <input (change)="preview(logo.files)" class="d-none" accept="image/gif, image/jpeg, image/png" type="file" #logo>
+           
         </div>
-        <div class="col-8">
+        <div class="col-8" >
             <div class="row">
                 <mat-form-field class="col-4">
-                    <input matInput placeholder="Nombre(S) *">
+                    <input matInput  formControlName="Nombre" placeholder="Nombre(S) *">
                 </mat-form-field>
                 <mat-form-field class="col-4">
-                    <input matInput placeholder="Apellido Paterno *">
+                    <input matInput  formControlName="ApellidoPaterno"  placeholder="Apellido Paterno *">
                 </mat-form-field>
                 <mat-form-field class="col-4">
-                    <input matInput placeholder="Apellido Materno *">
+                    <input matInput formControlName="ApellidoMaterno"  placeholder="Apellido Materno *">
                 </mat-form-field>
                 <mat-form-field class="col-4">
-                    <input disabled  matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker touchUi  disabled="false" #picker></mat-datepicker>
+                    <input (dateInput)="first($event.value.format('DD'),$event.value.format('MM'),$event.value.format('YYYY'))" matInput autocomplete="off"  formControlName="FechaNacimiento"
+                        [matDatepicker]="dp" disabled="disabled" placeholder="Fecha de Nacimiento *">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp disabled="false"></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field class="col-2">
-                    <input matInput placeholder="Edad">
+                    <input matInput   formControlName="Edad" placeholder="Edad">
+                </mat-form-field>
+                <mat-form-field  class="col-6">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select formControlName="Sexo"> 
+                        <mat-option value="Femenino">
+                           Femenino
+                        </mat-option>
+                        <mat-option value="Masculino">
+                            Masculino
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
                 <mat-form-field class="col-6">
-                    <input matInput placeholder="Sexo *">
+                    <input matInput formControlName="Curp"  placeholder="Curp">
                 </mat-form-field>
                 <mat-form-field class="col-6">
-                    <input matInput placeholder="Curp">
+                    <input matInput formControlName="RFC"  placeholder="RFC">
                 </mat-form-field>
                 <mat-form-field class="col-6">
-                    <input matInput placeholder="RFC">
+                    <input matInput formControlName="Telefono" prefix="+52" mask="(000) 000 00 00" placeholder="Teléfono Fijo">
+                </mat-form-field>
+                <mat-form-field class="col-6"> 
+                    <input matInput formControlName="Movil" prefix="+52"  mask="(000) 000 00 00" placeholder="Teléfono Móvil">
                 </mat-form-field>
                 <mat-form-field class="col-6">
-                    <input matInput placeholder="Teléfono Fijo">
+                    <input matInput formControlName="Email"  placeholder="Email">
                 </mat-form-field>
                 <mat-form-field class="col-6">
-                    <input matInput placeholder="Teléfono Móvil">
+                    <mat-label>Unidad Medica</mat-label>
+                    <mat-select formControlName="Unidad_Medica" >
+                        <mat-option value="u-1">
+                            Unidad 1
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="col-3">
+                    <input matInput formControlName="Especialidad" placeholder="Especialidad Médica">
+                </mat-form-field>
+                <mat-form-field class="col-3">
+                    <input matInput  formControlName="Cedula" placeholder="Cédula Profecional">
                 </mat-form-field>
                 <mat-form-field class="col-6">
-                    <input matInput placeholder="Email">
-                </mat-form-field>
-                <mat-form-field class="col-6">
-                    <input matInput placeholder="Unidad Médica">
-                </mat-form-field>
-                <mat-form-field class="col-6">
-                    <input matInput placeholder="Cedula Profecional">
-                </mat-form-field>
-                <mat-form-field class="col-6">
-                    <input matInput placeholder="Institución que otorgó cédula">
+                    <input matInput formControlName="Institucion_Cedula"  placeholder="Institución que otorgó cédula">
                 </mat-form-field>
             </div>
 
@@ -65,15 +84,14 @@
                     <h3>Información consulta</h3>
                 </div>
                 <div class="col-2 text-right">
-                    <button (click)="modal_horarios=!modal_horarios" mat-mini-fab class="bg-succes">
+                    <a (click)="modal_horarios=!modal_horarios" mat-mini-fab class="bg-succes">
                         <mat-icon>add</mat-icon>
-                    </button>
+                    </a>
                 </div>
                 <div class="col-12">
                     <mat-chip-list>
-                        <mat-chip>Lunes-jueves (9:00am a 7:00pm) <mat-icon>clear</mat-icon></mat-chip>
-                        <mat-chip>Lunes-jueves-Martes (9:00am a 7:00pm) <mat-icon>clear</mat-icon></mat-chip>
-                        <mat-chip>Domingo-Sabado (9:00am a 2:00pm) <mat-icon>clear</mat-icon></mat-chip>
+                        <mat-chip (click)="delete_dia_consulta(i)" *ngFor="let dia of list_dia_consulta; let i = index">{{dia.label}} <mat-icon>clear</mat-icon></mat-chip>
+                        
                     </mat-chip-list>
                 </div>
                 
@@ -85,20 +103,13 @@
                     <h3>Especialidades</h3>
                 </div> 
                 <div class="col-2 text-right">
-                    <button (click)="modal_especialidad=!modal_especialidad" mat-mini-fab class="bg-succes"><mat-icon>add</mat-icon></button>
+                    <a (click)="modal_especialidad=!modal_especialidad" mat-mini-fab class="bg-succes"><mat-icon>add</mat-icon></a>
                 </div>
                 <div class="col-12">
                     <mat-chip-list>
-                        <mat-chip>Angiología <mat-icon>clear</mat-icon>
+                        <mat-chip (click)="deleteespecial(i)" *ngFor="let especialidad of list_especialidades; let i = index;" >{{especialidad.Especialidad}} <mat-icon>clear</mat-icon>
                         </mat-chip>
-                        <mat-chip>Dermatología <mat-icon>clear</mat-icon>
-                        </mat-chip>
-                        <mat-chip>Ginecología <mat-icon>clear</mat-icon>
-                        </mat-chip>
-                        <mat-chip>Radiología <mat-icon>clear</mat-icon>
-                        </mat-chip>
-                        <mat-chip>Fisoterapeuta <mat-icon>clear</mat-icon>
-                        </mat-chip>
+                        
                     </mat-chip-list>
                 </div>
                 
@@ -110,9 +121,9 @@
                     <h3>Guardias</h3>
                 </div>
                 <div class="col-2 text-right">
-                    <button mat-mini-fab class="bg-succes">
+                    <a mat-mini-fab class="bg-succes">
                         <mat-icon>add</mat-icon>
-                    </button>
+                    </a>
                 </div>
                 
         
@@ -122,10 +133,10 @@
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-danger mr-3">Cancelar</button>
 
-                <button type="button" class="btn btn-succes">Guardar Datos</button>
+                <button type="submit" class="btn btn-succes">Guardar Datos</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 <div class="preload-modal" *ngIf="modal_especialidad">
     <div class="container">
@@ -139,14 +150,25 @@
                     </mat-card-header>
                 
                 <mat-card-content>
-                    <mat-form-field class="w-100">
-                        <input matInput placeholder="Especialidad" value="">
-                    </mat-form-field>
+                    <div class="container">
+                        <div class="row">
+                            <mat-form-field class="col-6">
+                                <input [(ngModel)]="input_specialidad.Especialidad" matInput placeholder="Especialidad" value="">
+                            </mat-form-field>
+                            <mat-form-field class="col-6">
+                                <input [(ngModel)]="input_specialidad.Cedula" matInput placeholder="Cedula" value="">
+                            </mat-form-field>
+                            <mat-form-field class="col-12">
+                                <input [(ngModel)]="input_specialidad.Institucion" matInput placeholder="Institución que otorga cédula" value="">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    
 
                 </mat-card-content>
                 <mat-card-actions class="d-flex justify-content-end">
-                    <button class="btn btn-outline-danger mr-3">Cerrar</button>
-                    <button class="btn btn-succes">Guardar</button>
+                    <button  (click)="modal_especialidad=!modal_especialidad"class="btn btn-outline-danger mr-3">Cerrar</button>
+                    <button (click)="onsaveespcialidad()" class="btn btn-succes">Guardar</button>
                 </mat-card-actions>
         </mat-card>
         </div>
@@ -162,18 +184,13 @@
                         <mat-icon>clear</mat-icon>
                     </button>
                 </mat-card-header>
-                    <mat-checkbox class="ml-3">Lunes</mat-checkbox>
-                    <mat-checkbox class="ml-3">Martes</mat-checkbox>
-                    <mat-checkbox class="ml-3">Miercoles</mat-checkbox>
-                    <mat-checkbox class="ml-3">Jueves</mat-checkbox>
-                    <mat-checkbox class="ml-3">Viernes</mat-checkbox>
-                    <mat-checkbox class="ml-3">Sabado</mat-checkbox>
-                    <mat-checkbox class="ml-3">Domingo</mat-checkbox>
+                    <mat-checkbox value="i" (change)="onsavediaconsulta($event,i)" *ngFor="let interest of interests; let i = index" class="ml-3">{{interest}}</mat-checkbox>
+                    
                     <div class="container-fluid">
                         <div class="row">
                             <mat-form-field class="col-6">
                                 <mat-label>Hora Inicial</mat-label>
-                                <mat-select>
+                                <mat-select [(ngModel)]="input_hora_inicio_consulta">
                                     <mat-option *ngFor="let hora of horas" [value]="hora">
                                         {{hora}}
                                     </mat-option>
@@ -181,7 +198,7 @@
                             </mat-form-field>
                             <mat-form-field class="col-6">
                                 <mat-label>Hora Final</mat-label>
-                                <mat-select>
+                                <mat-select [(ngModel)]="input_hora_fin_consulta">
                                     <mat-option *ngFor="let hora of horas" [value]="hora">
                                         {{hora}}
                                     </mat-option>
@@ -195,10 +212,16 @@
 
                 </mat-card-content>
                 <mat-card-actions class="d-flex justify-content-end">
-                    <button class="btn btn-outline-danger mr-3">Cerrar</button>
-                    <button class="btn btn-succes">Guardar</button>
+                    <button (click)="onclear_especialidad()" class="btn btn-outline-danger mr-3">Limpiar</button>
+                    <button (click)="onsavediaconsultalista()" class="btn btn-succes">Guardar</button>
                 </mat-card-actions>
             </mat-card>
         </div>
+    </div>
+</div>
+
+<div *ngIf="sniper" class="sniper d-flex justify-content-center align-items-center">
+    <div class="spinner-border text-light" role="status">
+        <span class="sr-only">Loading...</span>
     </div>
 </div>

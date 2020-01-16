@@ -20,12 +20,11 @@
     </div>
     <!--Inicio de secccion de card-->
     <div class="row m-t-30">
-        <div class="col-3">
+        <div class="col-3  m-t-30" [ngClass]="{'bg-gary-lte': doctor.Status==='0'}" *ngFor="let doctor of list_doctor  | paginate: {itemsPerPage: 20, currentPage: pageActual}; index as i">
             <mat-card>
                 <mat-card-header>
-                    <div mat-card-avatar class="header-image"></div>
-                    <mat-card-title>Leonardo Lira Cazares</mat-card-title>
-                    <mat-card-subtitle>4545454545-fk</mat-card-subtitle>
+                    <div mat-card-avatar [ngStyle]="{'background-image': mod_img(doctor.Foto) }" class="header-image"></div>
+                    <mat-card-title>{{doctor.Nombre}} {{doctor.Apellido_Pat}} {{doctor.Apellido_Mat}}</mat-card-title>
                     <p mat-line>
                         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                             <mat-icon>more_vert</mat-icon>
@@ -50,28 +49,32 @@
                 <mat-card-content>
                     <mat-grid-list cols="4" class="w-100 text-muted">
                         <mat-grid-tile class="text-left " [colspan]="2" [rowspan]="1">
-                            <small class="d-block w-100">Unidad Medica</small>
+                            <small class="d-block w-100">Unidad Médica</small>
                         </mat-grid-tile>
                         <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
-                            Clinica 23
+                            {{doctor.IDClinica}}
                         </mat-grid-tile>
                         <mat-grid-tile class="text-left" [colspan]="2" [rowspan]="1">
-                            <small class="d-block w-100">Especialidad Medica</small>
+                            <small class="d-block w-100">Especialidad Médica</small>
                         </mat-grid-tile>
                         <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
-                            Ginecologo
+                            {{doctor.Especialidad}}
                         </mat-grid-tile>
                         <mat-grid-tile class="text-left" [colspan]="2" [rowspan]="1">
-                            <small class="d-block w-100">Télefono</small>
+                            <small class="d-block w-100">Télefono Celular</small>
                         </mat-grid-tile>
                         <mat-grid-tile class="text-right" [colspan]="2" [rowspan]="1">
-                            776102514
+                            {{doctor.Celular}}
                         </mat-grid-tile>
                         
                     </mat-grid-list>
 
                 </mat-card-content>
             </mat-card>
+        </div>
+        <div class="col-12 text-center m-t-40">
+            <pagination-controls class="my-pagination" (pageChange)="pageActual = $event" previousLabel="Anterior"
+                nextLabel="Siguiente"></pagination-controls>
         </div>
     </div>
     <!--fin de secccion de card-->
